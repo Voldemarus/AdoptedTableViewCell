@@ -6,8 +6,13 @@
 //
 
 #import "ViewController.h"
+#import "Model.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+{
+    NSArray <Model *> *data;
+}
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -15,8 +20,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
+    ModelData *mData = [[ModelData alloc] init];
+    data = mData.data;
+
+
+
+
 }
+
+
+
+
+
 
 
 @end
