@@ -17,6 +17,8 @@ NSString const * AdoptedDataCellTableViewCellID     =   @"AdoptedDataCellTableVi
     UIStackView *stView;
 
     UISwitch *sw;
+
+    NSMutableArray <NSLayoutConstraint*> * con;
 }
 
 
@@ -38,6 +40,8 @@ NSString const * AdoptedDataCellTableViewCellID     =   @"AdoptedDataCellTableVi
         self.titleFont = [UIFont systemFontOfSize:14 weight:1.15];
         self.noteFont = [UIFont systemFontOfSize:12 weight:1.0];
         [self prepareLayout];
+
+        [self updateConstraints];
     }
     return self;
 }
@@ -50,11 +54,6 @@ NSString const * AdoptedDataCellTableViewCellID     =   @"AdoptedDataCellTableVi
 - (void) prepareLayout
 {
     // Create and place elements
-    stView = [[UIStackView alloc] initWithArrangedSubviews:@[titleLabel, noteLabel]];
-    stView.alignment = UIStackViewAlignmentFill;
-    stView.distribution = UIStackViewDistributionFillProportionally;
-    stView.axis = UILayoutConstraintAxisVertical;
-    stView.translatesAutoresizingMaskIntoConstraints = NO;
 
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 200, 30)];
     titleLabel.font = self.titleFont;
@@ -70,6 +69,13 @@ NSString const * AdoptedDataCellTableViewCellID     =   @"AdoptedDataCellTableVi
     noteLabel.numberOfLines = 1;
     noteLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 
+    stView = [[UIStackView alloc] initWithArrangedSubviews:@[titleLabel, noteLabel]];
+    stView.alignment = UIStackViewAlignmentFill;
+    stView.distribution = UIStackViewDistributionFillProportionally;
+    stView.axis = UILayoutConstraintAxisVertical;
+    stView.translatesAutoresizingMaskIntoConstraints = NO;
+
+
     [self.contentView addSubview:stView];
 
     sw = [[UISwitch alloc] initWithFrame:CGRectMake(0,0, 0, 0)];
@@ -77,6 +83,61 @@ NSString const * AdoptedDataCellTableViewCellID     =   @"AdoptedDataCellTableVi
     [sw addTarget:self action:@selector(switchTapped:) forControlEvents:UIControlEventValueChanged];
 
     [self.contentView addSubview:sw];
+
+    // ********  start Add consrtaints
+    if (con.count > 0) {
+        [NSLayoutConstraint deactivateConstraints:con];
+    } else if (!con) {
+        con = [NSMutableArray new];
+    }
+
+    [con addObject:[stView.topAnchor constraintGreaterThanOrEqualToAnchor:self.safeAreaLayoutGuide.topAnchor constant:10.0]];
+    [con addObject:[stView.leadingAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.leadingAnchor constant:10.0]];
+    [con addObject:[stView.centerYAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.centerYAnchor constant:0.0]];
+
+    [con addObject:[sw.leadingAnchor constraintGreaterThanOrEqualToAnchor:stView.trailingAnchor constant:25.0]];
+    [con addObject:[sw.centerYAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.centerYAnchor constant:0.0]];
+    [con addObject:[self.safeAreaLayoutGuide.trailingAnchor constraintEqualToAnchor:sw.trailingAnchor constant:12.0]];
+
+    [NSLayoutConstraint activateConstraints:con];
+    // ********  end  constraint definitons
+
+}
+
+- (void) setNoteText:(NSString *)noteText
+{
+    _noteText = noteText;
+    [self layoutSubviews];
+}
+
+- (void) setNoteFont:(UIFont *)noteFont
+{
+    _noteFont = noteFont;
+    [self layoutSubviews];
+}
+
+- (void) setTitleFont:(UIFont *)titleFont
+{
+    _titleFont = titleFont;
+    [self layoutSubviews];
+}
+
+- (void) setTitleText:(NSString *)titleText
+{
+    _titleText = titleText;
+    [self layoutSubviews];
+}
+
+
+
+
+- (void) layoutSubviews
+{
+    if (!stView) {
+        [self prepareLayout];
+    }
+    [super layoutSubviews];
+    currentHeight = stView.frame.size.height;
 }
 
 - (void) switchTapped:(id) sender

@@ -38,6 +38,9 @@ extern NSString const * AdoptedDataCellTableViewCellID;
 @property (nonatomic) NSInteger switchTag;      // Mandatory to identofy switch!
 @property (nonatomic, assign) id <AdoptedDataCellDelegate> delegate;
 
+- (instancetype) initWithtitle:(NSString *)aTitle
+                          note:(NSString *)aNote
+                andSwitchState:(BOOL) aState;
 
 @end
 
