@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-extern NSString const * AdoptedDataCellTableViewCellID;
+extern NSString * const AdoptedDataCellTableViewCellID;
 
 @interface AdoptedDataCellTableViewCell : UITableViewCell
 
@@ -33,15 +33,8 @@ extern NSString const * AdoptedDataCellTableViewCellID;
 @property (nonatomic, retain) UIColor *titleColor;
 @property (nonatomic, retain) UIColor *noteColor;
 
-@property (readonly) CGFloat cellHeight;
-
 @property (nonatomic) NSInteger switchTag;      // Mandatory to identofy switch!
 @property (nonatomic, assign) id <AdoptedDataCellDelegate> delegate;
-
-- (instancetype) initWithtitle:(NSString *)aTitle
-                          note:(NSString *)aNote
-                andSwitchState:(BOOL) aState;
-- (void) prepareLayout;
 
 @end
 

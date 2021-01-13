@@ -27,10 +27,6 @@
 
     ModelData *mData = [[ModelData alloc] init];
     data = mData.data;
-    cH = [[NSMutableArray alloc] initWithCapacity:data.count];
-    for (NSInteger i = 0; i < data.count; i++) {
-        cH[i] = @0;
-    }
 
     [self.tableView registerClass:[AdoptedDataCellTableViewCell class] forCellReuseIdentifier:AdoptedDataCellTableViewCellID];
 
@@ -46,37 +42,34 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AdoptedDataCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AdoptedDataCellTableViewCellID];
+    AdoptedDataCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AdoptedDataCellTableViewCellID forIndexPath:indexPath];
+
     Model *d = data[indexPath.row];
-    if (!cell) {
-        cell = [[AdoptedDataCellTableViewCell alloc] initWithtitle:d.title note:d.text andSwitchState:d.switchState];
-    } else {
-        cell.titleText = d.title;
-        cell.noteText = d.text;
-        cell.switchState = d.switchState;
-    }
-    [cell prepareLayout];
-    cH[indexPath.row] = @(cell.cellHeight);
+    cell.delegate = self;           // to intercept and delegate switch change events
+    cell.titleText = d.title;
+    cell.backgroundColor = [UIColor blueColor];
+    cell.titleFont = [UIFont systemFontOfSize:16 weight:1.25];
+    cell.titleColor = [UIColor whiteColor];
+    cell.noteColor = [UIColor yellowColor];
+    cell.noteText = d.text;
+    cell.switchState = d.switchState;
     cell.switchTag = indexPath.row;     // to be used in delegate
 
     return cell;
 }
 
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return UITableViewAutomaticDimension;
+    return NO;
 }
-
-
-
-
 
 #pragma mark - Switch tapped delegate method
 
 - (void) switchState:(NSInteger)tag changedTo:(BOOL)newState
 {
-    NSLog(@"Switch on row %ld switched to %@",tag, (newState ? @"On" : @"Off"));
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"Switch on row %ld switched to %@",tag, (newState ? @"On" : @"Off"));
+    });
 }
 
 

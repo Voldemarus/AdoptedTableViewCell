@@ -15,8 +15,7 @@
 		1BB1748825ADCD5400BC63FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BB1748625ADCD5400BC63FE /* LaunchScreen.storyboard */; };
 		1BB1748B25ADCD5400BC63FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB1748A25ADCD5400BC63FE /* main.m */; };
 		1BB1749525ADCEFC00BC63FE /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB1749425ADCEFC00BC63FE /* Model.m */; };
-		1BB1749A25ADD4E200BC63FE /* AdoptedDataCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB1749925ADD4E200BC63FE /* AdoptedDataCellTableViewCell.m */; };
-		1BB1749E25ADD83400BC63FE /* ReferenceXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB1749D25ADD83400BC63FE /* ReferenceXib.xib */; };
+		1BB174C825AF1B6E00BC63FE /* AdoptedDataCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB174C625AF1B6D00BC63FE /* AdoptedDataCellTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +33,8 @@
 		1BB1748A25ADCD5400BC63FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BB1749325ADCEFC00BC63FE /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		1BB1749425ADCEFC00BC63FE /* Model.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
-		1BB1749825ADD4E200BC63FE /* AdoptedDataCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdoptedDataCellTableViewCell.h; sourceTree = "<group>"; };
-		1BB1749925ADD4E200BC63FE /* AdoptedDataCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdoptedDataCellTableViewCell.m; sourceTree = "<group>"; };
-		1BB1749D25ADD83400BC63FE /* ReferenceXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferenceXib.xib; sourceTree = "<group>"; };
+		1BB174C625AF1B6D00BC63FE /* AdoptedDataCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdoptedDataCellTableViewCell.m; sourceTree = "<group>"; };
+		1BB174C725AF1B6E00BC63FE /* AdoptedDataCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdoptedDataCellTableViewCell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +96,8 @@
 		1BB1749725ADD4C200BC63FE /* DataCell */ = {
 			isa = PBXGroup;
 			children = (
-				1BB1749825ADD4E200BC63FE /* AdoptedDataCellTableViewCell.h */,
-				1BB1749925ADD4E200BC63FE /* AdoptedDataCellTableViewCell.m */,
-				1BB1749D25ADD83400BC63FE /* ReferenceXib.xib */,
+				1BB174C725AF1B6E00BC63FE /* AdoptedDataCellTableViewCell.h */,
+				1BB174C625AF1B6D00BC63FE /* AdoptedDataCellTableViewCell.m */,
 			);
 			path = DataCell;
 			sourceTree = "<group>";
@@ -164,7 +161,6 @@
 				1BB1748825ADCD5400BC63FE /* LaunchScreen.storyboard in Resources */,
 				1BB1748525ADCD5400BC63FE /* Assets.xcassets in Resources */,
 				1BB1748325ADCD5000BC63FE /* Main.storyboard in Resources */,
-				1BB1749E25ADD83400BC63FE /* ReferenceXib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BB1748025ADCD5000BC63FE /* ViewController.m in Sources */,
-				1BB1749A25ADD4E200BC63FE /* AdoptedDataCellTableViewCell.m in Sources */,
+				1BB174C825AF1B6E00BC63FE /* AdoptedDataCellTableViewCell.m in Sources */,
 				1BB1747A25ADCD5000BC63FE /* AppDelegate.m in Sources */,
 				1BB1748B25ADCD5400BC63FE /* main.m in Sources */,
 				1BB1747D25ADCD5000BC63FE /* SceneDelegate.m in Sources */,
