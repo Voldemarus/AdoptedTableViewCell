@@ -41,6 +41,7 @@ extern NSString const * AdoptedDataCellTableViewCellID;
 - (instancetype) initWithtitle:(NSString *)aTitle
                           note:(NSString *)aNote
                 andSwitchState:(BOOL) aState;
+- (void) prepareLayout;
 
 @end
 

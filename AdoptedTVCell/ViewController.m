@@ -54,8 +54,8 @@
         cell.titleText = d.title;
         cell.noteText = d.text;
         cell.switchState = d.switchState;
-
     }
+    [cell prepareLayout];
     cH[indexPath.row] = @(cell.cellHeight);
     cell.switchTag = indexPath.row;     // to be used in delegate
 
@@ -65,9 +65,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat h =  [cH[indexPath.row] floatValue];
-    NSLog(@"i - %ld h - %.2f", indexPath.row, h);
-    return h;
+    return UITableViewAutomaticDimension;
 }
 
 
